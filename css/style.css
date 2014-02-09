@@ -1,0 +1,31 @@
+#preview {
+  /*
+  background: #000;
+  border-radius: 0px;
+  width: 0px;
+  height: 0px;
+  */
+}
+
+#iframe {
+  text-align:center;
+  position: absolute;
+  z-index: 100000000;
+  left: 0;
+}
+
+#preview a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  display: none;
+}
+
+#preview a:hover {
+  color: #eee;
+}
+
+.notice {
+  font-size: 10px;
+  color: #fff;
+}
