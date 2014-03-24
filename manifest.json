@@ -1,13 +1,13 @@
 {
   "name": "SnappyLink",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "SnappyLink allows you to preview information from pages without clicking",
   "manifest_version": 2,
   "icons":{
   		"16": "img/logo1.png",
-        "32": "img/logo1.png",
-        "48": "img/logo1.png",
-        "128": "img/logo1.png"
+      "32": "img/logo1.png",
+      "48": "img/logo1.png",
+      "128": "img/logo1.png"
   	},
   "default_locale": "en",
   "minimum_chrome_version": "18",

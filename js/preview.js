@@ -2,14 +2,11 @@ var timer_to_delay_display;
 var timer_to_delay_disapper;
 
 $(document).ready(function(){
-
       var link;
       $("a").hover(
         function(){
           link = $(this);
-          delay_to_display_popup(link);
-          
-
+          delay_to_display_popup(link);          
         },
         function(event){
           clearTimeout(timer_to_delay_display);
@@ -18,11 +15,8 @@ $(document).ready(function(){
             function(){
               $('#iframe').remove();
             });
-                   
         delay_popup_disapper();
       });
-      
-
   
     $(document).keyup(function(e) {
       if (e.keyCode == 27) {
@@ -34,7 +28,7 @@ $(document).ready(function(){
 
 function delay_to_display_popup(link)
 {
-    timer_to_delay_display = setTimeout(function(){display_popup(link);},500);
+    timer_to_delay_display = setTimeout(function(){display_popup(link);},700);
 }
 
 function delay_popup_disapper()
@@ -50,7 +44,7 @@ function display_popup(link)
     
     // for now it's not work on stack overflow
     
-    if (url.indexOf("stackoverflow.com") != -1) {
+    if (url.indexOf("stackoverflow.com") != -1 || url.indexOf("google.com") != -1 || url.indexOf("facebook.com") != -1) {
         return false;
     }
     
@@ -60,20 +54,28 @@ function display_popup(link)
         
         
         // set width and height according to different website
-        if (url.indexOf("answers.yahoo.com") != -1) {
-            link.after('<div id="preview"><a href="'+href+'"></a><div class="notice">Press escape to close</div><iframe id="iframe" src='+href+' style="width:160%;height:550%;border:4px outset #5369E6;"></iframe></div>');
-        } else if (url.indexOf("reddit.com") != -1) {
-            link.after('<div id="preview"><a href="'+href+'"></a><div class="notice">Press escape to close</div><iframe id="iframe" src='+href+' style="width:99%;height:100%;border:4px outset #5369E6;"></iframe></div>');
-            $('#iframe').css('background-color', 'white');
-        } else if (url.indexOf("techcrunch.com") != -1) {
-            link.after('<div id="preview"><a href="'+href+'"></a><div class="notice">Press escape to close</div><iframe id="iframe" src='+href+' style="width:100%;min-height:200%;border:4px outset #5369E6;"></iframe></div>');
-        } else if(url.indexOf("youtube.com") != -1) {
-            link.after('<div id="preview"><a href="'+href+'"></a><div class="notice">Press escape to close</div><iframe id="iframe" src='+href+' style="width:100%;height:200%;border:4px outset #5369E6;"></iframe></div>');
+        if(url.indexOf("youtube.com") != -1) {
+            link.after('<div id="preview"><a href="'+href+'"></a> <iframe id="iframe" src='+href+' style="width:100%;height:200%;"></iframe></div>');
             $('#iframe').css('top', 0);
+        } else if (url.indexOf("reddit.com") != -1) {
+            link.after('<div id="preview"><a href="'+href+'"></a> <iframe id="iframe" src='+href+' style="width:99%;height:100%;"></iframe></div>');
+        } else if (url.indexOf("techcrunch.com") != -1) {
+            link.after('<div id="preview"><a href="'+href+'"></a> <iframe id="iframe" src='+href+' style="width:100%;min-height:200%;"></iframe></div>');
+        } else if (url.indexOf("answers.yahoo.com") != -1) {
+            link.after('<div id="preview"><a href="'+href+'"></a> <iframe id="iframe" src='+href+' style="width:160%;height:550%;"></iframe></div>');
+        } else if (url.indexOf("youku.com") != -1) {
+            link.after('<div id="preview"><a href="'+href+'"></a> <iframe id="iframe" src='+href+' style="width:700px;height:500px;"></iframe></div>');
         } else {
-            link.after('<div id="preview"><a href="'+href+'"></a><div class="notice">Press escape to close</div><iframe id="iframe" src='+href+' style="width:100%;height:100%;border:4px outset #5369E6;"></iframe></div>');
+            link.after('<div id="preview"><a href="'+href+'"></a> <iframe id="iframe" src='+href+' style="width:100%;height:100%;"></iframe></div>');
         }
         
+        $('#iframe').css('background-color', 'white');
+
+        
+        if($("#iframe").height() < "250"){
+            $('#iframe').remove();
+        }
+
         //}
         /*
         $('#preview').css('left', 100);
